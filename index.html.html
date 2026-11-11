@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alan Cortes — Work, people and play</title>
+<meta name="description" content="Alan Cortes. Jersey City. Building things, bringing people together, finding the next good game.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--ink:#000;--blue:#2433ff;--grey:#ececec;--b:3px solid var(--ink);--sh:6px 6px 0 var(--ink)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font:400 18px/1.55 Archivo,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+@media(pointer:fine){body,a,button,summary{cursor:none}}
+.cur{position:fixed;z-index:99;left:0;top:0;width:16px;height:16px;background:var(--blue);mix-blend-mode:multiply;pointer-events:none;transition:width .2s,height .2s,margin .2s}
+.cur.big{width:56px;height:56px;margin:-20px 0 0 -20px}
+@media(pointer:coarse){.cur{display:none}}
+/* gate */
+.gate{position:fixed;inset:0;z-index:90;background:var(--blue);color:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(20px,4vw,48px);transition:transform .8s cubic-bezier(.7,0,.2,1)}
+.gate.out{transform:translateY(-100%)}
+.gate h2{font-size:clamp(48px,13vw,200px);font-weight:900;font-stretch:125%;line-height:.85;letter-spacing:-.04em}
+.gate p{max-width:34ch;font-size:20px}
+.gate .row{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.btn{font:800 18px Archivo;font-stretch:110%;background:#fff;color:#000;border:var(--b);box-shadow:var(--sh);padding:16px 28px;text-decoration:none;display:inline-block;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(6px,6px);box-shadow:0 0 0 #000}
+.btn.ghost{background:transparent;color:inherit;border-color:currentColor;box-shadow:none}
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:16px clamp(20px,4vw,48px);mix-blend-mode:difference;color:#fff}
+header a{text-decoration:none;font-weight:700;margin-left:24px}
+header a:first-child{margin:0;font-weight:900;font-stretch:125%;font-size:22px}
+header nav a:hover{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:3px}
+@media(max-width:700px){header nav a:not(:last-child){display:none}}
+section{padding:clamp(80px,12vw,160px) clamp(20px,4vw,48px)}
+h1,h2,h3{font-weight:900;line-height:.9;letter-spacing:-.03em}
+h2{font-size:clamp(40px,8vw,120px);font-stretch:115%;text-transform:uppercase}
+small,.lab{font-size:14px;font-weight:600;letter-spacing:.02em}
+/* hero */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(24px,4vw,48px)}
+.hero h1{font-size:clamp(64px,19.5vw,330px);text-transform:uppercase;display:flex;flex-direction:column}
+.hero h1 span{display:flex;white-space:nowrap}
+.hero h1 i{font-style:normal;display:inline-block;font-variation-settings:"wdth" 62}
+.hero .meta{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:28px;border-top:var(--b);padding-top:16px}
+.hero .meta p{max-width:36ch}
+/* marquee */
+.mq{border-block:var(--b);background:var(--blue);color:#fff;overflow:hidden;white-space:nowrap;padding:14px 0}
+.mq div{display:inline-block;font-weight:900;font-stretch:125%;font-size:28px;text-transform:uppercase;animation:mq 26s linear infinite}
+.mq:hover div{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,6vw,96px)}
+.about p{max-width:52ch;margin-bottom:1.2em}
+.about .lede{font-size:clamp(24px,3vw,38px);line-height:1.15;font-weight:700;font-stretch:90%}
+@media(max-width:800px){.about{grid-template-columns:1fr}}
+/* experience */
+.exp h2{margin-bottom:clamp(32px,6vw,80px)}
+details{border-top:var(--b)}
+details:last-child{border-bottom:var(--b)}
+summary{list-style:none;display:grid;grid-template-columns:160px 1fr auto;gap:20px;align-items:baseline;padding:28px 0;transition:background .2s,padding .2s}
+summary::-webkit-details-marker{display:none}
+summary b{font-size:clamp(26px,4.4vw,64px);font-weight:900;font-stretch:100%;line-height:1;letter-spacing:-.03em;transition:font-stretch .3s}
+summary:hover{background:var(--blue);color:#fff;padding-inline:16px}
+summary:hover b{font-stretch:125%}
+summary::after{content:"+";font-size:40px;font-weight:900;line-height:1}
+details[open] summary::after{content:"−"}
+details[open] summary{background:#000;color:#fff;padding-inline:16px}
+details p{padding:24px 0 36px 180px;max-width:70ch}
+@media(max-width:700px){summary{grid-template-columns:1fr auto}summary small{grid-column:1/-1}details p{padding-left:0}}
+.edu{margin-top:32px}
+/* synthesis */
+.syn{background:#000;color:#fff;position:relative;overflow:hidden;min-height:110vh}
+.syn h2{font-size:clamp(56px,16vw,260px);font-stretch:125%;color:var(--bg);position:relative;z-index:1}
+.syn .cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,6vw,96px);margin-top:48px;position:relative;z-index:1}
+.syn p{max-width:46ch;margin-bottom:1em;font-size:20px}
+.syn .lede{font-size:clamp(28px,4vw,56px);font-weight:900;line-height:.98;letter-spacing:-.03em;font-stretch:110%}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}
+.tags span{border:2px solid #fff;padding:6px 14px;font-weight:700;font-size:15px}
+.ball{position:absolute;left:60%;top:8%;width:clamp(110px,14vw,190px);aspect-ratio:1;border-radius:50%;background:var(--blue);border:var(--b);border-color:#fff;z-index:2;touch-action:none;display:grid;place-items:center;font-weight:900;font-size:clamp(14px,1.6vw,20px);text-align:center;line-height:1;user-select:none;box-shadow:inset -12px -12px 0 rgba(0,0,0,.25)}
+.hint{position:relative;z-index:1;margin-top:40px;color:#fff;opacity:.7}
+@media(max-width:800px){.syn .cols{grid-template-columns:1fr}}
+/* now */
+.now{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.card{border:var(--b);box-shadow:var(--sh);padding:28px;background:var(--bg);transition:transform .2s,box-shadow .2s,background .2s;min-height:220px;display:flex;flex-direction:column;justify-content:space-between}
+.card:hover{transform:translate(-4px,-4px);box-shadow:10px 10px 0 var(--ink);background:var(--blue);color:#fff}
+.card h3{font-size:clamp(28px,3vw,44px);text-transform:uppercase}
+@media(max-width:800px){.now{grid-template-columns:1fr}}
+/* photos */
+.filters{display:flex;gap:12px;flex-wrap:wrap;margin:32px 0}
+.filters button{font:700 16px Archivo;background:var(--bg);border:var(--b);padding:10px 20px}
+.filters button:hover{background:var(--grey)}
+.filters button[aria-pressed=true]{background:var(--blue);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.grid figure{border:var(--b);overflow:hidden;aspect-ratio:3/4;position:relative;background:var(--grey)}
+.grid figure.w{grid-column:span 2;aspect-ratio:auto}
+.grid img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1);transition:filter .3s,transform .5s}
+.grid figure:hover img{filter:none;transform:scale(1.06)}
+.grid figcaption{position:absolute;left:0;bottom:0;background:#000;color:#fff;padding:6px 12px;font-size:14px;font-weight:700}
+.grid [hidden]{display:none}
+@media(max-width:800px){.grid{grid-template-columns:1fr 1fr}}
+/* contact */
+.contact{background:var(--blue);color:#fff;text-align:left}
+.contact a.big{display:block;font-size:clamp(48px,14vw,230px);font-weight:900;font-stretch:125%;line-height:.88;letter-spacing:-.04em;text-decoration:none;text-transform:uppercase;margin:40px 0;transition:font-stretch .4s,letter-spacing .4s}
+.contact a.big:hover{font-stretch:62%;letter-spacing:0}
+.contact .row{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between;border-top:3px solid #fff;padding-top:16px}
+/* player */
+.dock{position:fixed;right:16px;bottom:16px;z-index:60;width:min(340px,calc(100vw - 32px));background:var(--bg);border:var(--b);box-shadow:var(--sh)}
+.dock header{position:static;mix-blend-mode:normal;color:#000;padding:8px 12px;border-bottom:var(--b);font-weight:800;font-size:14px}
+.dock button{font:800 14px Archivo;background:#000;color:#fff;border:0;padding:4px 10px}
+.dock .body{height:80px}
+.dock.min .body{display:none}
+.dock .body a{display:block;padding:12px;font-weight:700}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="cur" aria-hidden="true"></div>
+
+<div class="gate" id="gate" role="dialog" aria-label="Enter site">
+  <small>Alan Cortes, Jersey City</small>
+  <div>
+    <h2>Turn it up.</h2>
+    <p style="margin-top:24px">This site has a soundtrack: Bangkok by After We. Press enter to start it.</p>
+  </div>
+  <div class="row">
+    <button class="btn" id="enter">Enter with sound</button>
+    <button class="btn ghost" id="mute">Enter quietly</button>
+  </div>
+</div>
+
+<header>
+  <a href="#top">AC</a>
+  <nav><a href="#about">About</a><a href="#work">Work</a><a href="#play">Volleyball</a><a href="#photos">Photos</a><a href="#contact">Contact</a></nav>
+</header>
+
+<main id="top">
+<section class="hero">
+  <h1 id="name" aria-label="Alan Cortes"><span data-t="ALAN"></span><span data-t="CORTES"></span></h1>
+  <div class="meta">
+    <p><b>Building things. Bringing people together. Finding the next good game.</b></p>
+    <p>Jersey City, NJ. Move your cursor across the name.</p>
+  </div>
+</section>
+
+<div class="mq" aria-hidden="true"><div>Technology ✳ Community ✳ Volleyball ✳ Travel ✳ Teaching ✳ Technology ✳ Community ✳ Volleyball ✳ Travel ✳ Teaching ✳ Technology ✳ Community ✳ Volleyball ✳ Travel ✳ Teaching ✳ Technology ✳ Community ✳ Volleyball ✳ Travel ✳ Teaching ✳</div></div>
+
+<section id="about" class="about">
+  <h2>Curious.<br>Connected.</h2>
+  <div>
+    <p class="lede">I'm Alan, a generalist from Jersey City who likes the places where technology, people, and community meet.</p>
+    <p>My path has run through technical implementation, physical therapy, teaching English in South Korea, and building a volleyball community from scratch. Outside of work I'm on a court, organizing a game, or exploring somewhere new.</p>
+    <p>This site is part portfolio, part field journal. It grows as I do.</p>
+    <a class="btn" href="https://www.linkedin.com/in/alan-c-045247103/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+  </div>
+</section>
+
+<section id="work" class="exp">
+  <h2>The route<br>so far.</h2>
+  <details open><summary><small>Jan 2023 – now</small><b>Grass Volleyball Coordinator</b><span></span></summary><p>Lincoln Park Grass Volleyball, Jersey City. Running weekly games, coordinating players, equipment and logistics, and keeping the community welcoming.</p></details>
+  <details><summary><small>May 2025 – Aug 2026</small><b>English Teacher</b><span></span></summary><p>Chungdahm Institute, Daegu, South Korea. Taught English to students and lived in a new city, with volleyball along the way.</p></details>
+  <details><summary><small>Jan 2024 – May 2025</small><b>Physical Therapy Aide</b><span></span></summary><p>Ivy Rehab Network. Supported patients and clinicians in a busy outpatient clinic.</p></details>
+  <details><summary><small>Aug 2021 – Aug 2023</small><b>Implementation Engineer</b><span></span></summary><p>Retarus. Worked with customers to set up and launch technical solutions.</p></details>
+  <p class="edu"><small>Education: B.A. Information Systems, minor in Psychology, cum laude. NJIT / Rutgers, 2020.</small></p>
+</section>
+
+<section id="play" class="syn">
+  <small>People and play</small>
+  <h2>More than<br>a game.</h2>
+  <div class="ball" id="ball">Throw me</div>
+  <div class="cols">
+    <p class="lede">Good games. Good people. Room for everyone.</p>
+    <div>
+      <p>Synthesis is an intermediate-level grass volleyball community in Jersey City. We play, improve, and meet new friends in a welcoming space.</p>
+      <p>Behind the games are the details: identity, event communication, group coordination, equipment, and a culture worth protecting.</p>
+      <div class="tags"><span>Leadership</span><span>Events</span><span>Networking</span><span>Community</span></div>
+      <a class="btn" href="#" data-todo>Meetup group ↗</a>
+    </div>
+  </div>
+  <p class="hint">Jersey City → Daegu → Tokyo → somewhere next. Grab the ball and throw it.</p>
+</section>
+
+<section>
+  <h2>Right now.</h2>
+  <div class="now">
+    <div class="card"><h3>Building</h3><p>A home for projects, ideas, and things still taking shape.</p></div>
+    <div class="card"><h3>Playing</h3><p>Finding good people and good games through volleyball.</p></div>
+    <div class="card"><h3>Exploring</h3><p>Keeping space for new places, perspectives, and conversations.</p></div>
+  </div>
+</section>
+
+<section id="photos">
+  <h2>Frames.</h2>
+  <div class="filters" role="group" aria-label="Filter photos">
+    <button aria-pressed="true" data-f="all">All</button><button aria-pressed="false" data-f="travel">Travel</button><button aria-pressed="false" data-f="volleyball">Volleyball</button><button aria-pressed="false" data-f="everyday">Everyday</button>
+  </div>
+  <div class="grid">
+    <figure class="w" data-c="travel"><img loading="lazy" alt="Dusk over a landscape" src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1100&q=80"><figcaption>Somewhere new</figcaption></figure>
+    <figure data-c="everyday"><img loading="lazy" alt="Sunlight over a field" src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=800&q=80"><figcaption>Slow morning</figcaption></figure>
+    <figure data-c="volleyball"><img loading="lazy" alt="Volleyball action" src="https://images.unsplash.com/photo-1592656094267-764a45160876?auto=format&fit=crop&w=800&q=80"><figcaption>Game point</figcaption></figure>
+    <figure data-c="volleyball"><img loading="lazy" alt="Athletes on a court" src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=800&q=80"><figcaption>Together</figcaption></figure>
+    <figure class="w" data-c="everyday"><img loading="lazy" alt="Mountain lake" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1100&q=80"><figcaption>Outside the routine</figcaption></figure>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <small>Work, ideas, volleyball, or a good conversation.</small>
+  <a class="big" href="mailto:hello@example.com">Let's talk ↗</a>
+  <div class="row"><small>Alan Cortes, Jersey City, NJ</small><small><a href="https://www.linkedin.com/in/alan-c-045247103/" target="_blank" rel="noreferrer">LinkedIn</a></small><small>© 2026</small></div>
+</section>
+</main>
+
+<aside class="dock min" id="dock" aria-label="Music player">
+  <header><span>Now playing: Bangkok, After We</span><button id="tog" aria-expanded="false">Open</button></header>
+  <div class="body" id="sp"></div>
+</aside>
+
+<script>
+/* ===== SETTINGS ===== */
+// Paste the Spotify link for "Bangkok" by After We (Spotify > Share > Copy Song Link).
+const SPOTIFY_TRACK = "";
+/* ==================== */
+
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+// cursor
+const cur=$(".cur");let mx=innerWidth/2,my=innerHeight/2,active=0;
+addEventListener("pointermove",e=>{mx=e.clientX;my=e.clientY;active=performance.now();cur.style.transform=`translate(${mx-8}px,${my-8}px)`});
+document.addEventListener("pointerover",e=>cur.classList.toggle("big",!!e.target.closest("a,button,summary,.ball")));
+
+// hero name: letters widen near the cursor
+const letters=[];
+$$("#name span").forEach(r=>{[...r.dataset.t].forEach(c=>{const i=document.createElement("i");i.textContent=c;i.setAttribute("aria-hidden","true");r.append(i);letters.push(i)})});
+function tick(t){
+  const live=t-active<1800;
+  letters.forEach((l,k)=>{
+    let w;
+    if(live){const r=l.getBoundingClientRect(),d=Math.hypot(mx-(r.left+r.width/2),my-(r.top+r.height/2));w=125-Math.min(d/Math.max(innerWidth*.35,200),1)*63}
+    else w=93+31*Math.sin(t/800+k*.7);
+    l.style.fontVariationSettings=`"wdth" ${w.toFixed(1)}`;
+  });
+  requestAnimationFrame(tick);
+}
+if(reduce)letters.forEach(l=>l.style.fontVariationSettings='"wdth" 100');else requestAnimationFrame(tick);
+
+// photo filters
+$$(".filters button").forEach(b=>b.onclick=()=>{
+  $$(".filters button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  $$(".grid figure").forEach(f=>f.hidden=b.dataset.f!=="all"&&f.dataset.c!==b.dataset.f);
+});
+
+// placeholder links
+$$("[data-todo]").forEach(a=>a.onclick=e=>e.preventDefault());
+
+// draggable, throwable volleyball
+(()=>{
+  const ball=$("#ball"),box=$("#play");
+  let x=0,y=0,vx=0,vy=0,drag=false,lx=0,ly=0,started=false;
+  const size=()=>ball.offsetWidth;
+  function init(){x=box.clientWidth*.6;y=box.clientHeight*.08;draw()}
+  function draw(){ball.style.left=x+"px";ball.style.top=y+"px"}
+  ball.addEventListener("pointerdown",e=>{drag=true;started=true;ball.setPointerCapture(e.pointerId);lx=e.clientX;ly=e.clientY;vx=vy=0});
+  ball.addEventListener("pointermove",e=>{if(!drag)return;vx=e.clientX-lx;vy=e.clientY-ly;x+=vx;y+=vy;lx=e.clientX;ly=e.clientY;draw()});
+  ball.addEventListener("pointerup",()=>drag=false);
+  function step(){
+    if(started&&!drag&&!reduce){
+      vy+=.6;x+=vx;y+=vy;
+      const W=box.clientWidth-size(),H=box.clientHeight-size();
+      if(x<0){x=0;vx*=-.8}if(x>W){x=W;vx*=-.8}
+      if(y<0){y=0;vy*=-.8}if(y>H){y=H;vy*=-.75;vx*=.97;if(Math.abs(vy)<1)vy=0}
+      draw();
+    }
+    requestAnimationFrame(step);
+  }
+  init();addEventListener("resize",init);step();
+})();
+
+// Spotify
+const dock=$("#dock"),sp=$("#sp");let ctrl=null,want=false;
+const m=SPOTIFY_TRACK.match(/track[\/:]([A-Za-z0-9]+)/);
+const uri=m?`spotify:track:${m[1]}`:null;
+$("#tog").onclick=()=>{const o=dock.classList.toggle("min")===false;$("#tog").textContent=o?"Close":"Open";$("#tog").setAttribute("aria-expanded",o)};
+if(uri){
+  window.onSpotifyIframeApiReady=api=>api.createController(sp,{uri,width:"100%",height:80},c=>{
+    ctrl=c;c.addListener("ready",()=>{if(want)c.play()});
+  });
+  const s=document.createElement("script");s.src="https://open.spotify.com/embed/iframe-api/v1";s.async=true;document.body.append(s);
+}else{
+  sp.innerHTML='<a href="https://open.spotify.com/search/Bangkok%20After%20We" target="_blank" rel="noreferrer">Add the track link in index.html. Search Spotify ↗</a>';
+}
+function enter(sound){
+  $("#gate").classList.add("out");
+  if(sound){want=true;dock.classList.remove("min");$("#tog").textContent="Close";if(ctrl)ctrl.play()}
+}
+$("#enter").onclick=()=>enter(true);
+$("#mute").onclick=()=>enter(false);
+</script>
+</body>
+</html>
